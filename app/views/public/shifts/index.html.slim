@@ -1,0 +1,40 @@
+p#notice
+  = notice
+
+.container
+  .row.justify-content-center
+    .col-4
+      h1.top シフト表
+      br
+
+.container
+  .row
+    .col-md-4
+      .schedule 今後のシフト一覧
+
+      table.table
+        thead.thead
+          tr
+            th シフト
+            th 日程
+        tbody
+          - @shifts.each do |shift|
+            tr
+              td = start_time
+              td = shift.start_time.strftime("%m-%d")
+
+      = form_with(model: @shift, local: true) do |f|
+        .form-group
+          = f.label :start_time, "希望時間"
+          br
+          = f.datetime_select :start_time
+        .form-group
+          = f.submit '登録する'
+
+    .col-md-8
+      = month_calendar events: @shifts do |date, shifts|
+        = date.day
+
+      - @shifts.each do |shift|
+        div
+          = shift.start_time
