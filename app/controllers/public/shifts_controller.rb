@@ -2,7 +2,8 @@ class Public::ShiftsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @shifts = Shift.all
+    @user = current_user
+    @shifts = current_user.shifts
     @shift = Shift.new
   end
 
@@ -11,17 +12,20 @@ class Public::ShiftsController < ApplicationController
   end
 
   def create
-    Shift.create(shift_parameter)
+    @shift = Shift.new(shift_params)
+    @shift.user_id = current_user.id
+    @shift.save
     redirect_to shifts_path
   end
 
   def edit
     @shift = Shift.find(params[:id])
+    @shifts = current_user.shifts
   end
 
   def update
     @shift = Shift.find(params[:id])
-    if @shift.update(shift_parameter)
+    if @shift.update(shift_params)
       redirect_to shifts_path,notice: "編集しました"
     else
       render 'edit'
@@ -30,7 +34,7 @@ class Public::ShiftsController < ApplicationController
 
   private
 
-  def shift_parameter
+  def shift_params
     params.require(:shift).permit(:start_time, :finish_time, :date, :attendance)
   end
 

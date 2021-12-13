@@ -15,3 +15,12 @@
  */
 @import "simple_calendar";
 @import "bootstrap";
+
+.simple-calendar {
+  .wday-0 {
+  color: red;
+  }
+  .wday-6 {
+   color: blue;
+  }
+}

@@ -4,7 +4,7 @@ p#notice
 .container
   .row.justify-content-center
     .col-4
-      h1.top シフト表
+      h1.top シフト編集
       br
 
 .container
@@ -21,9 +21,9 @@ p#notice
           - @shifts.each do |shift|
             tr
               td = shift.start_time.strftime("%Y-%m-%d %H:%M")
-              td = link_to '編集する', edit_shift_path(shift.id), class: 'btn btn-success btn-sm'
+              td
 
-      = form_with(model: @shift, local: true) do |f|
+      = form_with model: @shift, url:shift_path, local: true, method: :patch do |f|
         .form-group
           = f.label :attendance, "出勤有無"
           br
@@ -38,7 +38,7 @@ p#notice
           br
           = f.datetime_select :start_time
         .form-group
-          = f.submit '登録する'
+          = f.submit '更新する'
     /↓共通化/
 
     .col-md-8
