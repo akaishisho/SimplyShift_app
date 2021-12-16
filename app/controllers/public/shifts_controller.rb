@@ -32,6 +32,12 @@ class Public::ShiftsController < ApplicationController
     end
   end
 
+  def destroy
+    @shift = Shift.find(params[:id])
+    @shift.destroy
+    redirect_to shifts_path
+  end
+
   private
 
   def shift_params

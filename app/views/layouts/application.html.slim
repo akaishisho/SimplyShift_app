@@ -8,13 +8,33 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    - if user_signed_in?
-      li
-        = link_to "ログアウト", destroy_user_session_path, method: :delete
-    - else
-      li
-        = link_to "新規登録", new_user_registration_path
-      li
-        = link_to "ログイン", new_user_session_path
+    header.border-bottom
+      .nav.navbar.navbar-expand-lg.navbar-dark.bg-light
+        .container
+          .navbar-brand
+            = link_to 'SimplyShift', root_path, class:"logo"
 
-    = yield
+        .collapse.navbar-collapse
+          ul.navbar-nav.ml-auto
+
+            - if admin_signed_in?
+              li.nav-item.border.rounded-lg.text-nowrap
+                = link_to "ログアウト", destroy_admin_session_path, method: :delete
+            - elsif user_signed_in?
+              li.nav-item.border.rounded-lg.text-nowrap
+                = link_to "シフト登録", shifts_path
+              li.nav-item.border.rounded-lg.text-nowrap
+                = link_to "ログアウト", destroy_user_session_path, method: :delete
+            - else
+              li.nav-item.border.rounded-lg.text-nowrap
+                = link_to "新規登録", new_user_registration_path
+              li.nav-item.border.rounded-lg.text-nowrap
+                = link_to "ログイン", new_user_session_path
+
+  main
+    == yield
+
+  footer.container.mt-5
+    .row
+      .mx-auto
+        | Copyright XXXXXXXXX All Rights Reserved.

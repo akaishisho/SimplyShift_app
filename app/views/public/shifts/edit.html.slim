@@ -20,8 +20,12 @@ p#notice
         tbody
           - @shifts.each do |shift|
             tr
-              td = shift.start_time.strftime("%Y-%m-%d %H:%M")
-              td
+              - if shift.attendance == true
+                td = shift.start_time.strftime("%Y-%m-%d %H:%M")
+                td
+              - else
+                td = shift.start_time.strftime("%Y-%m-%d ×")
+                td
 
       = form_with model: @shift, url:shift_path, local: true, method: :patch do |f|
         .form-group
@@ -34,11 +38,20 @@ p#notice
           | 無
 
         .form-group
-          = f.label :start_time, "希望時間"
+          = f.label :start_time, "希望時間(※)"
           br
           = f.datetime_select :start_time
-        .form-group
-          = f.submit '更新する'
+
+        .form-row
+          .form-group.col-sm-3
+            = f.submit '更新する', class: 'btn btn-success btn-sm'
+          .form-group.col-sm-3
+            = link_to '戻る', :back, class: 'btn btn-secondary btn-sm'
+        p
+          | ※出勤無しの場合は希望日を選択し、
+          br
+          | 時間は00：00で登録をお願いいたします。
+
     /↓共通化/
 
     .col-md-8
@@ -48,8 +61,11 @@ p#notice
         - shifts.each do |shift|
           div
             - if shift.attendance == true
-                p ○
+              p ○
             - else
-                p ×
+              p ×
 
+          - if shift.attendance == true
             = shift.start_time.strftime("%H:%M")
+          - else
+            | -

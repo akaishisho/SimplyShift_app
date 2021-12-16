@@ -17,11 +17,18 @@ p#notice
           tr
             th シフト
             th
+            th
         tbody
           - @shifts.each do |shift|
             tr
-              td = shift.start_time.strftime("%Y-%m-%d %H:%M")
-              td = link_to '編集する', edit_shift_path(shift.id), class: 'btn btn-success btn-sm'
+              - if shift.attendance == true
+                td = shift.start_time.strftime("%Y-%m-%d %H:%M")
+                td = link_to '編集', edit_shift_path(shift.id), class: 'btn btn-sm btn-primary fas fa-edit'
+                td = link_to '削除', shift_path(shift.id), method: :delete,"data-confirm"  => "本当に削除しますか？", class:"btn btn-sm btn-danger fas fa-eraser"
+              - else
+                td = shift.start_time.strftime("%Y-%m-%d ×")
+                td = link_to '編集', edit_shift_path(shift.id), class: 'btn btn-sm btn-primary fas fa-edit'
+                td = link_to '削除', shift_path(shift.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger fas fa-eraser"
 
       = form_with(model: @shift, local: true) do |f|
         .form-group
@@ -34,11 +41,16 @@ p#notice
           | 無
 
         .form-group
-          = f.label :start_time, "希望時間"
+          = f.label :start_time, "希望時間(※)"
           br
           = f.datetime_select :start_time
         .form-group
-          = f.submit '登録する'
+          = f.submit '登録する', class: 'btn btn-success btn-sm'
+        p
+          | ※出勤無しの場合は希望日を選択し、
+          br
+          | 時間は00：00で登録をお願いいたします。
+
     /↓共通化/
 
     .col-md-8
@@ -48,8 +60,11 @@ p#notice
         - shifts.each do |shift|
           div
             - if shift.attendance == true
-                p ○
+              p ○
             - else
-                p ×
+              p ×
 
-            = shift.start_time.strftime("%H:%M")
+            - if shift.attendance == true
+              = shift.start_time.strftime("%H:%M")
+            - else
+              | -
