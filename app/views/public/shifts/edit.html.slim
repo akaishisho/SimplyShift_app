@@ -17,14 +17,17 @@ p#notice
           tr
             th シフト
             th
+            th
         tbody
           - @shifts.each do |shift|
             tr
               - if shift.attendance == true
-                td = shift.start_time.strftime("%Y-%m-%d %H:%M")
+                td = shift.date
+                td = shift.start_time.strftime("%H:%M")
                 td
               - else
-                td = shift.start_time.strftime("%Y-%m-%d ×")
+                td = shift.date
+                td ×
                 td
 
       = form_with model: @shift, url:shift_path, local: true, method: :patch do |f|
@@ -38,9 +41,19 @@ p#notice
           | 無
 
         .form-group
-          = f.label :start_time, "希望時間(※)"
+          = f.label :date, "希望日程"
           br
-          = f.datetime_select :start_time
+          = f.date_select :date
+
+        .form-group
+          = f.label :start_time, "希望開始時間(※)"
+          br
+          = f.time_select :start_time, :minute_step => 5
+
+        .form-group
+          = f.label :finish_time, "希望終了時間(※)"
+          br
+          = f.time_select :finish_time, :minute_step => 5
 
         .form-row
           .form-group.col-sm-3

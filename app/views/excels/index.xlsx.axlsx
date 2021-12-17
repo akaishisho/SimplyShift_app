@@ -1,0 +1,8 @@
+wd = xlsx_package.workbook
+
+@shifts.each_with_index do |shift, index|
+  wb.add_worksheet(name: shift.date) do |sheet|
+    sheet.add_row ["No.","shift.user.name","start_time"]
+    sheet.add_row [index, shift.user.name, shift.start_time]
+  end
+end

@@ -9,3 +9,7 @@
       | ×
 
     br
+
+.container
+  .row.justify-content-center
+    = link_to "Excel出力", shifts_path(@shifts, format: :xlsx), class: 'btn btn-success'
