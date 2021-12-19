@@ -1,0 +1,22 @@
+// Place all the styles related to the admin/sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+input.admin-sessions-item {
+  width: 100%;
+  background: transparent;
+  border-bottom: solid 1px #dcdcdc;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-size: 1rem;
+  padding: 0.5em 0.4em;
+  transition: all 0.4s;
+  color: #333333;;
+  margin: 0.7rem 0;
+}
+
+input.admin-sessions-item:focus {
+  background: #ffbcbc;
+  transform: scale3d(1.06,1.06,1.06);
+}
