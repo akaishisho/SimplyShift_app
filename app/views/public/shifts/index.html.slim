@@ -4,7 +4,7 @@ p#notice
 .container
   .row.justify-content-center
     .col-4
-      h1.top シフト表
+      h1.top.text-nowrap シフト表
       br
 
 .container
@@ -15,23 +15,28 @@ p#notice
       table.table
         thead.thead
           tr
-            th シフト
+            th 日程
+            th 開始
+            th 終了
             th
-            th
-            th
+            th.text-nowrap
         tbody
-          - @shifts.each do |shift|
+          - @new_shifts.each do |new_shift|
             tr
-              - if shift.attendance == true
-                td = shift.date
-                td = shift.start_time.strftime("%H:%M")
-                td = link_to '編集', edit_shift_path(shift.id), class: 'btn btn-sm btn-primary fas fa-edit'
-                td = link_to '削除', shift_path(shift.id), method: :delete,"data-confirm"  => "本当に削除しますか？", class:"btn btn-sm btn-danger fas fa-eraser"
+              - if new_shift.attendance == true
+                td.text-nowrap = new_shift.date.strftime('%m-%d')
+                td = new_shift.start_time.strftime("%H:%M")
+                td = new_shift.finish_time.strftime("%H:%M")
+                td.text-nowrap = link_to '編集', edit_shift_path(new_shift.id), class: 'btn btn-sm btn-primary fas fa-edit'
+                td.text-nowrap = link_to '削除', shift_path(new_shift.id), method: :delete,"data-confirm"  => "本当に削除しますか？", class:"btn btn-sm btn-danger fas fa-eraser"
               - else
-                td = shift.date
+                td.text-nowrap = new_shift.date.strftime('%m-%d')
                 td ×
-                td = link_to '編集', edit_shift_path(shift.id), class: 'btn btn-sm btn-primary fas fa-edit'
-                td = link_to '削除', shift_path(shift.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger fas fa-eraser"
+                td ×
+                td.text-nowrap = link_to '編集', edit_shift_path(new_shift.id), class: 'btn btn-sm btn-primary fas fa-edit'
+                td.text-nowrap = link_to '削除', shift_path(new_shift.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger fas fa-eraser"
+
+        = paginate @new_shifts
 
       = form_with(model: @shift, local: true) do |f|
         .form-group

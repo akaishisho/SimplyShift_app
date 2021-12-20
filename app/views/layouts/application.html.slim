@@ -26,12 +26,12 @@ html
 
               - if admin_signed_in?
                 li.nav-item.border.rounded-lg.text-nowrap
-                  = link_to "ログアウト", destroy_admin_session_path, method: :delete
+                  = link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark'
               - elsif user_signed_in?
                 li.nav-item.border.rounded-lg.text-nowrap
-                  = link_to "シフト登録", shifts_path
+                  = link_to "シフト登録", shifts_path, class: 'nav-link text-dark'
                 li.nav-item.border.rounded-lg.text-nowrap
-                  = link_to "ログアウト", destroy_user_session_path, method: :delete
+                  = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark'
 
       main
         == yield

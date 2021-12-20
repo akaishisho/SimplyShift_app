@@ -4,7 +4,7 @@ p#notice
 .container
   .row.justify-content-center
     .col-4
-      h1.top シフト編集
+      h1.top.text-nowrap シフト編集
       br
 
 .container
@@ -15,20 +15,22 @@ p#notice
       table.table
         thead.thead
           tr
-            th シフト
-            th
-            th
+            th 日程
+            th 開始
+            th 終了
         tbody
-          - @shifts.each do |shift|
+          - @new_shifts.each do |new_shift|
             tr
-              - if shift.attendance == true
-                td = shift.date
-                td = shift.start_time.strftime("%H:%M")
-                td
+              - if new_shift.attendance == true
+                td = new_shift.date
+                td = new_shift.start_time.strftime("%H:%M")
+                td= new_shift.finish_time.strftime("%H:%M")
               - else
-                td = shift.date
+                td = new_shift.date
                 td ×
-                td
+                td ×
+
+        = paginate @new_shifts
 
       = form_with model: @shift, url:shift_path, local: true, method: :patch do |f|
         .form-group

@@ -4,6 +4,7 @@ class Public::ShiftsController < ApplicationController
   def index
     @user = current_user
     @shifts = current_user.shifts
+    @new_shifts = current_user.shifts.page(params[:page]).per(5).reverse_order
     @shift = Shift.new
   end
 
@@ -21,6 +22,7 @@ class Public::ShiftsController < ApplicationController
   def edit
     @shift = Shift.find(params[:id])
     @shifts = current_user.shifts
+    @new_shifts = current_user.shifts.page(params[:page]).per(5).reverse_order
   end
 
   def update
