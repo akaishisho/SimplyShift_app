@@ -1,15 +1,17 @@
-= week_calendar events: @shifts do |date, shifts|
-  = date
-  br
-  - shifts.each do |shift|
-    = shift.user.name
-    - if shift.attendance == true
-      = shift.start_time.strftime("%H:%M")
-    - else
-      | ×
+br
+.container
+    = week_calendar events: @shifts do |date, shifts|
+      = date
+      br
+      - shifts.each do |shift|
+        = shift.user.name
+        - if shift.attendance == true
+          = shift.start_time.strftime("%H:%M")
+        - else
+          | ×
 
-    br
+        br
 
 .container
   .row.justify-content-center
-    = link_to "Excel出力", shifts_path(@shifts, format: :xlsx), class: 'btn btn-success'
+    = link_to "Excel出力", admin_shifts_path(@shifts, format: :xlsx), class: 'btn btn-success rounded-pill'

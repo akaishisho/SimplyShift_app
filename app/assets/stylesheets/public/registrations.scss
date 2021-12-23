@@ -20,3 +20,9 @@ input.registrations-item:focus {
   background: #ffbcbc;
   transform: scale3d(1.06,1.06,1.06);
 }
+
+//サイアップボタン調整
+.btn.btn-success.rounded-pill {
+  width: 300px;
+  padding: 10px;
+}

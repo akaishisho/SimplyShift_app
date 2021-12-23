@@ -2,7 +2,7 @@ p#notice
   = notice
 
 .container
-  .row.justify-content-center
+  .row.justify-content-start
     .col-4
       h1.top.text-nowrap シフト編集
       br
@@ -61,9 +61,11 @@ p#notice
           .form-group.col-sm-3
             = f.submit '更新する', class: 'btn btn-success btn-sm'
           .form-group.col-sm-3
-            = link_to '戻る', :back, class: 'btn btn-secondary btn-sm'
+            = link_to '戻る', shifts_path, class: 'btn btn-secondary btn-sm'
         p
-          | ※出勤無しの場合は希望日を選択し、
+          | ※
+          br
+          | 出勤無しの場合は希望日を選択し、
           br
           | 時間は00：00で登録をお願いいたします。
 

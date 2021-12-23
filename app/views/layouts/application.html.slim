@@ -7,16 +7,19 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    link[rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"]
+    link[rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all"]
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
   body
     div.footerFixed
       header.border-bottom.sticky-top
         .nav.navbar.navbar-expand-lg.navbar-dark.bg-light
           .container
-            .navbar-brand
-              = link_to 'SimplyShift', root_path, class:"logo"
+            .navbar-brand.faa-parent.animated-hover
+              = link_to 'SimplyShift', root_path, class:"logo fas fa-calendar-alt faa-float"
 
             button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"]
               span.navbar-toggler-icon
@@ -25,26 +28,25 @@ html
             ul.navbar-nav.ml-auto
 
               - if admin_signed_in?
-                li.nav-item.border.rounded-lg.text-nowrap
-                  = link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark'
-                li.nav-item.border.rounded-lg.text-nowrap
-                  = link_to "お問合せ", inquiry_index_path, class: 'nav-link text-dark'
+                li.nav-item.border.rounded-lg.text-nowrap.faa-parent.animated-hover
+                  = link_to " ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark far fa-arrow-alt-circle-right faa-bounce'
+                li.nav-item.border.rounded-lg.text-nowrap.faa-parent.animated-hover
+                  = link_to " お問合せ", inquiry_index_path, class: 'nav-link text-dark far fa-paper-plane faa-bounce'
               - elsif user_signed_in?
-                li.nav-item.border.rounded-lg.text-nowrap
-                  = link_to "シフト登録", shifts_path, class: 'nav-link text-dark'
-                li.nav-item.border.rounded-lg.text-nowrap
-                  = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark'
-                li.nav-item.border.rounded-lg.text-nowrap
-                  = link_to "お問合せ", inquiry_index_path, class: 'nav-link text-dark'
+                li.nav-item.border.rounded-lg.text-nowrap.faa-parent.animated-hover
+                  = link_to " シフト登録", shifts_path, class: 'nav-link text-dark far fa-calendar-plus faa-bounce'
+                li.nav-item.border.rounded-lg.text-nowrap.faa-parent.animated-hover
+                  = link_to " ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark far fa-arrow-alt-circle-right faa-bounce'
+                li.nav-item.border.rounded-lg.text-nowrap.faa-parent.animated-hover
+                  = link_to " お問合せ", inquiry_index_path, class: 'nav-link text-dark far fa-paper-plane faa-bounce'
               - else
-                li.nav-item.border.rounded-lg.text-nowrap
-                  = link_to "お問合せ", inquiry_index_path, class: 'nav-link text-dark'
+                li.nav-item.border.rounded-lg.text-nowrap.faa-parent.animated-hover
+                  = link_to " お問合せ", inquiry_index_path, class: 'nav-link text-dark far fa-paper-plane faa-bounce'
 
       main
         == yield
 
       footer.fixed-bottom.border-top.bg-light
         .container.mt-5
-          .row
-            .mx-auto
-              | Copyright XXXXXXXXX All Rights Reserved.
+          .row.justify-content-center
+              | Copyright ©️ 2021 ShotaroAkaishi All Rights Reserved.

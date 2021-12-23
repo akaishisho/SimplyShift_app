@@ -95,6 +95,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.10.1)
+      devise (>= 4.8.0)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
@@ -274,10 +276,12 @@ DEPENDENCIES
   bootstrap (~> 4.5)
   byebug
   capybara (>= 2.15)
+  caxlsx
   caxlsx_rails
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  devise-i18n
   dotenv-rails
   font-awesome-sass (~> 5.13.0)
   html2slim

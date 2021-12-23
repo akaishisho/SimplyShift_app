@@ -1,6 +1,9 @@
 .page-header
+  br
   h1
     | お問い合わせ
+
+  br
 
 = form_for @inquiry, :url => inquiry_thanks_path do |f|
   table.table
@@ -25,4 +28,8 @@
       td
         = f.hidden_field :message
         = simple_format(@inquiry.message)
-  = f.submit '送信', :class => 'btn btn-primary'
+
+  .container
+    .row.justify-content-center
+      = f.submit '送信', :class => 'btn btn-primary rounded-pill'
+      

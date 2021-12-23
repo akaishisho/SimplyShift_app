@@ -29,18 +29,18 @@
 }
 
 /*ハンバーガーメニューの調整*/
-.navbar-dark .navbar-toggler-icon{
+.navbar-dark .navbar-toggler-icon {
   /* 三本線 */
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 128, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-image: image-url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 128, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-.navbar-dark .navbar-toggler{
+.navbar-dark .navbar-toggler {
   /* 枠線 */
   border-color: rgba(0, 0, 128, 1);
 }
 
 //footer調整
-.footerFixed{
+.footerFixed {
     min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
     position: relative;/* ←相対位置 */
     padding-bottom: 60px; /* ←フッターの高さを指定 */
@@ -48,7 +48,18 @@
     /* ↑ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
 }
 
-footer{
+footer {
     position: absolute;/* ←絶対位置 */
     bottom: 0;
+}
+
+//共通ボタン調整
+.btn.btn-success {
+  width: 80px;
+  padding: 5px;
+}
+
+.btn.btn-secondary {
+  width: 80px;
+  padding: 5px;
 }

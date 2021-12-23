@@ -59,6 +59,11 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+
+group :production do
+  gem 'mysql2'
+end
+
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'slim-rails'
 gem 'html2slim'
@@ -67,10 +72,9 @@ gem 'simple_calendar', '~> 2.0'
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13.0'
+gem 'caxlsx'
 gem 'caxlsx_rails'
 gem 'kaminari'
 gem 'rails-i18n', '~> 5.1'
 gem 'dotenv-rails'
-group :production do
-  gem 'mysql2'
-end
+gem 'devise-i18n'

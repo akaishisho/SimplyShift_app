@@ -6,6 +6,7 @@ class Public::ShiftsController < ApplicationController
     @shifts = current_user.shifts
     @new_shifts = current_user.shifts.page(params[:page]).per(5).reverse_order
     @shift = Shift.new
+    @deadline = Date.today.end_of_month - 10
   end
 
   def new

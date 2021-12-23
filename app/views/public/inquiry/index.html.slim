@@ -1,7 +1,10 @@
 = form_for @inquiry, :url => inquiry_confirm_path do |f|
   .page-header
+    br
     h1
       | お問い合わせ
+
+    br
 
   - if @inquiry.errors.any?
     .alert.alert-danger[role="alert"]
@@ -21,8 +24,9 @@
         span.text-danger
           | （必須）
 
+        = f.text_field :name, class: "form-control name"
       td
-        = f.text_field :name
+
     tr
       th
         | メールアドレス
@@ -30,13 +34,17 @@
         span.text-danger
           | （必須）
 
+        = f.text_field :email, class: "form-control email"
+
       td
-        = f.text_field :email
+
     tr
       th
         | お問い合わせ内容
 
+        = f.text_area :message, class: "form-control message"
       td
-        = f.text_area :message
-
-  = f.submit '確認', class: 'btn btn-primary'
+  .container
+    .row.justify-content-center
+      = f.submit '確 認', class: 'btn btn-primary rounded-pill'
+      

@@ -2,7 +2,7 @@ p#notice
   = notice
 
 .container
-  .row.justify-content-center
+  .row.justify-content-start
     .col-4
       h1.top.text-nowrap シフト表
       br
@@ -27,16 +27,28 @@ p#notice
                 td.text-nowrap = new_shift.date.strftime('%m-%d')
                 td = new_shift.start_time.strftime("%H:%M")
                 td = new_shift.finish_time.strftime("%H:%M")
-                td.text-nowrap = link_to '編集', edit_shift_path(new_shift.id), class: 'btn btn-sm btn-primary fas fa-edit'
-                td.text-nowrap = link_to '削除', shift_path(new_shift.id), method: :delete,"data-confirm"  => "本当に削除しますか？", class:"btn btn-sm btn-danger fas fa-eraser"
+                - if Date.today <= @deadline
+                  td.text-nowrap = link_to '編集', edit_shift_path(new_shift.id), class: 'btn btn-sm btn-primary fas fa-edit'
+                  td.text-nowrap = link_to '削除', shift_path(new_shift.id), method: :delete,"data-confirm"  => "本当に削除しますか？", class:"btn btn-sm btn-danger fas fa-eraser"
+                - else
+                  td
+                  td
               - else
                 td.text-nowrap = new_shift.date.strftime('%m-%d')
                 td ×
                 td ×
-                td.text-nowrap = link_to '編集', edit_shift_path(new_shift.id), class: 'btn btn-sm btn-primary fas fa-edit'
-                td.text-nowrap = link_to '削除', shift_path(new_shift.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger fas fa-eraser"
+                - if Date.today <= @deadline
+                  td.text-nowrap = link_to '編集', edit_shift_path(new_shift.id), class: 'btn btn-sm btn-primary fas fa-edit'
+                  td.text-nowrap = link_to '削除', shift_path(new_shift.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger fas fa-eraser"
+                - else
+                  td
+                  td
 
         = paginate @new_shifts
+      p
+        | <i class="fas fa-exclamation-circle fa-lg faa-pulse animated my-orange"></i>
+        br
+        | シフトの編集、削除は月末最終日から10日前まで可能です。
 
       = form_with(model: @shift, local: true) do |f|
         .form-group
@@ -66,7 +78,9 @@ p#notice
         .form-group
           = f.submit '登録する', class: 'btn btn-success btn-sm'
         p
-          | ※出勤無しの場合は希望日を選択し、
+          | ※
+          br
+          | 出勤無しの場合は希望日を選択し、
           br
           | 時間は00：00で登録をお願いいたします。
 
