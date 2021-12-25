@@ -36,9 +36,12 @@ class Public::ShiftsController < ApplicationController
   end
 
   def destroy
+    # --ここから--(非同期処理のため取得)
+    @new_shifts = current_user.shifts.page(params[:page]).per(5).reverse_order
+    @deadline = Date.today.end_of_month - 10
+    # --ここまで--(非同期処理のため取得)
     @shift = Shift.find(params[:id])
     @shift.destroy
-    redirect_to shifts_path
   end
 
   private

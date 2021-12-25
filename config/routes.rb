@@ -19,9 +19,9 @@ end
 
 scope module: :public do
   root 'homes#top'
-  get 'inquiry/index' => 'inquiry#index'     # 入力画面
-  post 'inquiry/confirm' => 'inquiry#confirm'   # 確認画面
-  post 'inquiry/thanks'  => 'inquiry#thanks'    # 送信完了画面
+  get 'inquiry/index' => 'inquiry#index' # 入力画面
+  post 'inquiry/confirm' => 'inquiry#confirm' # 確認画面
+  post 'inquiry/thanks'  => 'inquiry#thanks' # 送信完了画面
   get '/about' => 'homes#about'
   resources :shifts, only: [:index, :create, :edit, :update, :destroy]
 end

@@ -20,35 +20,16 @@ p#notice
             th 終了
             th
             th.text-nowrap
-        tbody
-          - @new_shifts.each do |new_shift|
-            tr
-              - if new_shift.attendance == true
-                td.text-nowrap = new_shift.date.strftime('%m-%d')
-                td = new_shift.start_time.strftime("%H:%M")
-                td = new_shift.finish_time.strftime("%H:%M")
-                - if Date.today <= @deadline
-                  td.text-nowrap = link_to '編集', edit_shift_path(new_shift.id), class: 'btn btn-sm btn-primary fas fa-edit'
-                  td.text-nowrap = link_to '削除', shift_path(new_shift.id), method: :delete,"data-confirm"  => "本当に削除しますか？", class:"btn btn-sm btn-danger fas fa-eraser"
-                - else
-                  td
-                  td
-              - else
-                td.text-nowrap = new_shift.date.strftime('%m-%d')
-                td ×
-                td ×
-                - if Date.today <= @deadline
-                  td.text-nowrap = link_to '編集', edit_shift_path(new_shift.id), class: 'btn btn-sm btn-primary fas fa-edit'
-                  td.text-nowrap = link_to '削除', shift_path(new_shift.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger fas fa-eraser"
-                - else
-                  td
-                  td
-
+        tbody#shift
+          = render partial: 'public/shifts/index', locals: {new_shifts: @new_shifts, deadline: @deadline}
+          
         = paginate @new_shifts
       p
         | <i class="fas fa-exclamation-circle fa-lg faa-pulse animated my-orange"></i>
         br
         | シフトの編集、削除は月末最終日から10日前まで可能です。
+        br
+        | なお、シフト削除後のカレンダーへの反映は画面の再読み後となりますので、ご了承ください。
 
       = form_with(model: @shift, local: true) do |f|
         .form-group

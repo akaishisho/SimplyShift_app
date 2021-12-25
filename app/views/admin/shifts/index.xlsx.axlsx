@@ -2,7 +2,7 @@ wb = xlsx_package.workbook
 
 @shifts.each_with_index do |shift, index|
   wb.add_worksheet(name: shift.date.to_s) do |sheet|
-    sheet.add_row ["No.","shift.user.name","start_time"]
-    sheet.add_row [index, shift.user.name, shift.start_time]
+    sheet.add_row ["No.","ユーザ名","開始時刻","終了時刻"]
+    sheet.add_row [shift.user_id, shift.user.name, shift.start_time.strftime("%H:%M"), shift.finish_time.strftime("%H:%M")]
   end
 end

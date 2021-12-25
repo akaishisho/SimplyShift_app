@@ -1,0 +1,22 @@
+- new_shifts.each do |new_shift|
+  tr
+    - if new_shift.attendance == true
+      td.text-nowrap = new_shift.date.strftime('%m-%d')
+      td = new_shift.start_time.strftime("%H:%M")
+      td = new_shift.finish_time.strftime("%H:%M")
+      - if Date.today <= deadline
+        td.text-nowrap = link_to '編集', edit_shift_path(new_shift.id), class: 'btn btn-sm btn-primary fas fa-edit'
+        td.text-nowrap = link_to '削除', shift_path(new_shift.id), method: :delete, remote: true, "data-confirm"  => "本当に削除しますか？", class:"btn btn-sm btn-danger fas fa-eraser"
+      - else
+        td
+        td
+    - else
+      td.text-nowrap = new_shift.date.strftime('%m-%d')
+      td ×
+      td ×
+      - if Date.today <= deadline
+        td.text-nowrap = link_to '編集', edit_shift_path(new_shift.id), class: 'btn btn-sm btn-primary fas fa-edit'
+        td.text-nowrap = link_to '削除', shift_path(new_shift.id), method: :delete, remote: true, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger fas fa-eraser"
+      - else
+        td
+        td

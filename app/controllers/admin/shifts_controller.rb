@@ -11,5 +11,4 @@ class Admin::ShiftsController < ApplicationController
       end
     end
   end
-
 end
