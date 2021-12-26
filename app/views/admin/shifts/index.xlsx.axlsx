@@ -1,8 +1,11 @@
 wb = xlsx_package.workbook
+today = Time.zone.today + 1.month
 
-@shifts.each_with_index do |shift, index|
-  wb.add_worksheet(name: shift.date.to_s) do |sheet|
-    sheet.add_row ["No.","ユーザ名","開始時刻","終了時刻"]
-    sheet.add_row [shift.user_id, shift.user.name, shift.start_time.strftime("%H:%M"), shift.finish_time.strftime("%H:%M")]
+(today.beginning_of_month..today.end_of_month).each do |day|
+  wb.add_worksheet(name: day.to_s) do |sheet|
+    sheet.add_row ["ユーザーID","ユーザ名","開始時刻","終了時刻"]
+    Shift.where(date: day).each do |shift|
+      sheet.add_row [shift.user_id, shift.user.name, shift.start_time.strftime("%H:%M"), shift.finish_time.strftime("%H:%M")]
+    end
   end
 end
