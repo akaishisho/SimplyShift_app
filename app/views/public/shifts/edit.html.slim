@@ -31,20 +31,24 @@ p#notice
                 td ×
 
         = paginate @new_shifts
+        
+      - if Date.today <= @deadline
+        = form_with model: @shift, url:shift_path, local: true, method: :patch do |f|
+          = render partial: 'public/shifts/form', locals: {f:f}
 
-      = form_with model: @shift, url:shift_path, local: true, method: :patch do |f|
-        = render partial: 'public/shifts/form', locals: {f:f}
+          .form-row
+            .form-group.col-sm-3
+              = f.submit '更新する', class: 'btn btn-success btn-sm'
+            .form-group.col-sm-3
+              = link_to '戻る', shifts_path, class: 'btn btn-secondary btn-sm'
+          p
+            | ※
+            br
+            | 出勤無しの場合は希望日を選択し、
+            br
+            | 時間は00：00で登録をお願いいたします。
 
-        .form-row
-          .form-group.col-sm-3
-            = f.submit '更新する', class: 'btn btn-success btn-sm'
-          .form-group.col-sm-3
-            = link_to '戻る', shifts_path, class: 'btn btn-secondary btn-sm'
-        p
-          | ※
-          br
-          | 出勤無しの場合は希望日を選択し、
-          br
-          | 時間は00：00で登録をお願いいたします。
+      - else
+        .div
 
     = render partial: 'public/shifts/calendar', locals: {shifts: @shifts}

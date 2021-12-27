@@ -1,5 +1,6 @@
 class Public::ShiftsController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_shift,only: [:edit]
 
   def index
     @user = current_user
@@ -24,6 +25,7 @@ class Public::ShiftsController < ApplicationController
     @shift = Shift.find(params[:id])
     @shifts = current_user.shifts
     @new_shifts = current_user.shifts.page(params[:page]).per(5).reverse_order
+    @deadline = Date.today.end_of_month - 10
   end
 
   def update
@@ -42,6 +44,13 @@ class Public::ShiftsController < ApplicationController
     # --ここまで--(非同期処理のため取得)
     @shift = Shift.find(params[:id])
     @shift.destroy
+  end
+
+  def correct_shift
+          @shift = Shift.find(params[:id])
+      unless @shift.user.id == current_user.id
+        redirect_to shifts_path
+      end
   end
 
   private
