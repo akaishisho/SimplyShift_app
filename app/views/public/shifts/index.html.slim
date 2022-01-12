@@ -15,9 +15,9 @@ p#notice
       table.table
         thead.thead
           tr
-            th 日程
-            th 開始
-            th 終了
+            th.text-nowrap 日程
+            th.text-nowrap 開始
+            th.text-nowrap 終了
             th
             th.text-nowrap
         tbody#shift
@@ -34,7 +34,7 @@ p#notice
       - if Date.today <= @deadline
         = form_with(model: @shift, local: true) do |f|
           = render partial: 'public/shifts/form', locals: {f:f}
-  
+
           .form-group
             = f.submit '登録する', class: 'btn btn-success btn-sm'
             p
