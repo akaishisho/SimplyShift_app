@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/*Sign_upとLog_inのボタンデザイン*/
-.btn-flat-vertical-border {
+/*Log_inのボタンデザイン*/
+.btn-flat-vertical-border1 {
   position: relative;
   display: inline-block;
   font-weight: bold;
@@ -14,10 +14,57 @@
   color: #668ad8;
   background: #e1f3ff;
   transition: .4s;
+  width: 200px;
+  margin-bottom: 30px;
+  text-align: center
 }
 
-.btn-flat-vertical-border:hover {
+.btn-flat-vertical-border1:hover {
   background: #668ad8;
+  color: #FFF;
+}
+
+/*Sign_upのボタンデザイン*/
+.btn-flat-vertical-border2 {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-left: solid 4px #28a745;
+    border-right: solid 4px #28a745;
+    color: #28a745;
+    background: #28a74540;
+    transition: .4s;
+    width: 200px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.btn-flat-vertical-border2:hover {
+  background: #28a745;
+  color: #FFF;
+}
+
+/*ゲスト用のボタンデザイン*/
+.btn-flat-vertical-border3 {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-left: solid 4px #708090;
+  border-right: solid 4px #708090;
+  color: #708090;
+  background: #b0c4de57;
+  transition: .4s;
+  width: 200px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.btn-flat-vertical-border3:hover {
+  background: #708090;
   color: #FFF;
 }
 
