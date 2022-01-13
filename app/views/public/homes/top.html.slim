@@ -3,16 +3,18 @@
       .mx-auto
         h1.animate__animated.animate__bounce
           | <i class="fas fa-calendar-alt"></i> SimplyShift
-          
+
     br
 
-    .row.justify-content-center
+    .d-flex.flex-column.align-items-center
       - if user_signed_in?
         span.btn-circle-border-double
           | ログイン中
 
       - else
         .btn-group.mr-3
-          = link_to "新規登録", new_user_registration_path,class: "btn-flat-vertical-border fas fa-user-plus"
+          = link_to "新規登録", new_user_registration_path,class: "btn-flat-vertical-border2 fas fa-user-plus"
         .btn-group.mr-3
-          = link_to "ログイン", new_user_session_path,class: "btn-flat-vertical-border fas fa-sign-in-alt"
+          = link_to "ログイン", new_user_session_path,class: "btn-flat-vertical-border1 fas fa-sign-in-alt"
+        .btn-group.mr-3
+          = link_to "ゲスト用", public_guest_sign_in_path, class: "btn-flat-vertical-border3 fas fa-sign-in-alt", method: :post

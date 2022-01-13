@@ -24,7 +24,7 @@ class Public::ShiftsController < ApplicationController
   def edit
     @shift = Shift.find(params[:id])
     @shifts = current_user.shifts
-    @new_shifts = current_user.shifts.page(params[:page]).per(5).reverse_order
+    @new_shifts = current_user.shifts.page(params[:page]).per(5).order("date DESC")
     @deadline = Date.today.end_of_month - 10
   end
 
@@ -39,7 +39,7 @@ class Public::ShiftsController < ApplicationController
 
   def destroy
     # --ここから--(非同期処理のため取得)
-    @new_shifts = current_user.shifts.page(params[:page]).per(5).reverse_order
+    @new_shifts = current_user.shifts.page(params[:page]).per(5).order("date DESC")
     @deadline = Date.today.end_of_month - 10
     # --ここまで--(非同期処理のため取得)
     @shift = Shift.find(params[:id])
