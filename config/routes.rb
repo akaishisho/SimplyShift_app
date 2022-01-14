@@ -20,6 +20,7 @@ end
 
 namespace :admin do
   resources :shifts, only: [:index, :edit, :update]
+  resources :users, only: [:index]
 end
 
 scope module: :public do
