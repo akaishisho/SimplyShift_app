@@ -1,3 +1,20 @@
 // Place all the styles related to the admin/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.col-md-auto.offset-sm-1.user-tag {
+  background-color: #EEEEEE;
+}
+
+h4.user-tag-text {
+  text-align: center;
+  margin-top: 10px;
+}
+
+b.user-status-valid {
+  color: #32cd32;
+}
+
+b.user-status-invalid {
+  color: #cccccc;
+}

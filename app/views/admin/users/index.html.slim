@@ -1,0 +1,41 @@
+.container
+  .row.mt-4.ml-5
+    .col-md-auto.offset-sm-1.user-tag
+      h4.user-tag-text
+        | 社員一覧
+
+  .row.mt-3.justify-content-center
+    .col-md-9
+      table.table.table-bordered
+        tr.table-secondary
+          th
+            | 会員ID
+
+          th
+            | 氏名
+
+          th
+            | メールアドレス
+
+          th
+            | ステータス
+
+        - @users.reverse_each do |user|
+          tr
+            td
+              = user.id
+            td
+              = user.name
+            td
+              = user.email
+            td
+              - if user.is_deleted == false
+                b.user-status-valid
+                  | 有効
+
+              - else
+                b.user-status-invalid
+                  | 退会
+
+  .row.mb-4.justify-content-center
+    = paginate @users

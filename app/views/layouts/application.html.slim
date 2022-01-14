@@ -29,6 +29,10 @@ html
 
               - if admin_signed_in?
                 li.nav-item.border.rounded-lg.text-nowrap.faa-parent.animated-hover
+                   = link_to " シフト一覧", admin_shifts_path, class: 'nav-link text-dark far fa-calendar-check faa-bounce'
+                li.nav-item.border.rounded-lg.text-nowrap.faa-parent.animated-hover
+                  = link_to " 社員一覧", admin_users_path, class: 'nav-link text-dark far fa-user faa-bounce'
+                li.nav-item.border.rounded-lg.text-nowrap.faa-parent.animated-hover
                   = link_to " ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark far fa-arrow-alt-circle-right faa-bounce'
                 li.nav-item.border.rounded-lg.text-nowrap.faa-parent.animated-hover
                   = link_to " お問合せ", inquiry_index_path, class: 'nav-link text-dark far fa-paper-plane faa-bounce'
