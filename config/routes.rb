@@ -28,6 +28,9 @@ scope module: :public do
   get 'inquiry/index' => 'inquiry#index' # 入力画面
   post 'inquiry/confirm' => 'inquiry#confirm' # 確認画面
   post 'inquiry/thanks'  => 'inquiry#thanks' # 送信完了画面
+  get 'users/unsubscribe' => 'users#unsubscribe', as: 'confirm_unsubscribe'
+  patch 'users/withdraw' => 'users#withdraw', as: 'withdraw_user'
+  put 'users/withdraw' => 'users#withdraw'
   get '/about' => 'homes#about'
   resources :shifts, only: [:index, :create, :edit, :update, :destroy]
 end
