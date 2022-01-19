@@ -1,6 +1,10 @@
 <div class="container">
   <br>
   <h2>ログイン</h2>
+  <% if flash[:danger] %>
+    <p class="text-red"><%= flash[:danger] %></p>
+  <% end %>
+  
   <br>
   <%= form_with model: @user, url: user_session_path, local: true do |f| %>
     <div class="field">
