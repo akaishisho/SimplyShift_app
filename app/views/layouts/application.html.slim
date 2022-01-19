@@ -42,6 +42,8 @@ html
                 li.nav-item.border.rounded-lg.text-nowrap.faa-parent.animated-hover
                   = link_to " ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark far fa-arrow-alt-circle-right faa-bounce'
                 li.nav-item.border.rounded-lg.text-nowrap.faa-parent.animated-hover
+                  = link_to " 退会確認", confirm_unsubscribe_path, class: 'nav-link text-dark far fa-window-close faa-bounce'
+                li.nav-item.border.rounded-lg.text-nowrap.faa-parent.animated-hover
                   = link_to " お問合せ", inquiry_index_path, class: 'nav-link text-dark far fa-paper-plane faa-bounce'
               - else
                 li.nav-item.border.rounded-lg.text-nowrap.faa-parent.animated-hover

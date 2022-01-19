@@ -1,0 +1,24 @@
+- if !(@user.name == "guestuser")
+  .container
+    .row.mt-4.ml-5
+      .col-md-auto.offset-sm-1
+        h3.section-ttl
+          | 本当に退会しますか？ 
+        
+        br
+        
+        h4
+          | 退会すると、シフトの登録情報が閲覧できなくなります。
+  
+        br
+          | 退会する場合は、「退会する」をクリックしてください。
+    
+        .flex.justify-around.mt2
+          = link_to "シフト登録に戻る", shifts_path, class: "btn btn-primary unsubscribe"
+          = link_to "退会する", withdraw_user_path, method: :patch, "data-confirm" => "OKを押すと退会処理がされます。本当によろしいですか？", class: "btn btn-danger unsubscribe"
+- else
+  .container
+    .row.mt-4.ml-5
+      .col-md-auto.offset-sm-1
+        h3.section-ttl
+          | <i class="fas fa-exclamation-circle fa-lg faa-pulse animated my-orange"></i>ゲストユーザーは退会不可です。

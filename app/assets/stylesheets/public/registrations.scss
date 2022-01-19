@@ -26,3 +26,8 @@ input.registrations-item:focus {
   width: 300px;
   padding: 10px;
 }
+
+// エラーメッセージの調整
+#error_explanation {
+  color: #ff3333;
+}
