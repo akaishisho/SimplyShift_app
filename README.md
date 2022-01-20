@@ -52,15 +52,38 @@
 
 ### 主な利用シーン
 ***
-シフトの作成〜Excel出力まで  
-【管理者側】  
-- シフトの編集や確認をするとき  
+シフトの作成〜Excel出力まで
+【管理者側】
+- シフトの編集や確認をするとき
 
-【バイト・社員側】  
+【バイト・社員側】
 - iOS端末やAndroid端末からシフト作成、編集、提出をするとき
 
 ## 設計書
 
+### 画面設計書
+***
+https://xd.adobe.com/view/792da110-2e06-4cb6-bce7-1dec5bfca640-2c7e/
+
+### ER図
+***
+https://drive.google.com/file/d/1z8-2TEXCq3_bXnXvlUdciARRXTOtJrgW/view?usp=sharing
+
+### テーブル定義書
+***
+https://docs.google.com/spreadsheets/d/1cXoSbKeEfg0uXk0tluOemPPjFs9YzwYlFWy3_uFZJOw/edit?usp=sharing
+
+### アプリケーション詳細設計
+***
+https://docs.google.com/spreadsheets/d/1VAE2sxG9Kkmsz_STIoBVFpAokiiygCazBehqFH_HpBg/edit?usp=sharing
+
+### AWS構成図
+***
+https://drive.google.com/file/d/1Gtqk1nYv4mfFDUsegME4eRKMydbUP8lU/view?usp=sharing
+
+### AWSインフラ設計書
+***
+https://docs.google.com/spreadsheets/d/1pWBtztsUmqJHM5uWRpgKTE0oaFHECO98NYG8sWr7ifc/edit?usp=sharing
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1JBQW9hFtIV11smTorqY8t_kg4-LRssP8FrwicvneonY/edit?usp=sharing
