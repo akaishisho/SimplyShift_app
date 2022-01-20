@@ -85,6 +85,10 @@ https://drive.google.com/file/d/1Gtqk1nYv4mfFDUsegME4eRKMydbUP8lU/view?usp=shari
 ***
 https://docs.google.com/spreadsheets/d/1pWBtztsUmqJHM5uWRpgKTE0oaFHECO98NYG8sWr7ifc/edit?usp=sharing
 
+### テスト仕様書
+***
+https://docs.google.com/spreadsheets/d/1939aANmQ32pvgILvIXk-RwdNGtG_4vYr/edit?usp=sharing&ouid=103320184222745393953&rtpof=true&sd=true
+
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1JBQW9hFtIV11smTorqY8t_kg4-LRssP8FrwicvneonY/edit?usp=sharing
 
