@@ -7,7 +7,7 @@ class Public::ShiftsController < ApplicationController
     @shifts = current_user.shifts
     @new_shifts = current_user.shifts.page(params[:page]).per(5).order("date DESC")
     @shift = Shift.new
-    @deadline = Date.today.end_of_month #- 10
+    @deadline = Date.today.end_of_month - 10
   end
 
   def new
@@ -21,7 +21,7 @@ class Public::ShiftsController < ApplicationController
       redirect_to shifts_path
     else
       @new_shifts = current_user.shifts.page(params[:page]).per(5).order("date DESC")
-      @deadline = Date.today.end_of_month #- 10
+      @deadline = Date.today.end_of_month - 10
       @shifts = current_user.shifts
       render "index"
     end
