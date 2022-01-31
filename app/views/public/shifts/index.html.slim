@@ -1,6 +1,13 @@
 p#notice
   = notice
-
+  
+- if @shift.errors.any?
+  .alert
+    ul
+      - @shift.errors.full_messages.each do |message|
+        li
+          = message
+          
 .container
   .row.justify-content-start
     .col-4

@@ -1,35 +1,36 @@
-.page-header
-  br
-  h1
-    | お問い合わせ
+.container
+  .row
+    .col-sm-12.col-md-8.col-lg-5.px-5.px-sm-0.mx-auto
+      .page-header
+        br
+        h1
+          | お問い合わせ内容確認
 
-  br
+        br
 
-= form_for @inquiry, :url => inquiry_thanks_path do |f|
-  table.table
-    tr
-      th
-        | 名前
+      = form_for @inquiry, :url => inquiry_thanks_path do |f|
+        .form-group
+          .span.name
+              | 名前
 
-      td
-        = f.hidden_field :name
-        = @inquiry.name
-    tr
-      th
-        | メールアドレス
+              = f.hidden_field :name
+          br
+              = @inquiry.name
+        .form-group
+          .span.email
+              | メールアドレス
 
-      td
-        = f.hidden_field :email
-        = @inquiry.email
-    tr
-      th
-        | お問い合わせ内容
+              = f.hidden_field :email
+          br
+              = @inquiry.email
+        .form-group
+          .span.message
+              | お問い合わせ内容
 
-      td
-        = f.hidden_field :message
-        = simple_format(@inquiry.message)
+              = f.hidden_field :message
+          br
+              = simple_format(@inquiry.message)
 
-  .container
-    .row.justify-content-center
-      = f.submit '送信', :class => 'btn btn-primary rounded-pill'
-      
+        .container
+          .row.justify-content-center
+            = f.submit '送信', :class => 'btn btn-primary rounded-pill'

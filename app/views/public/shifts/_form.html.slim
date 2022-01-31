@@ -2,10 +2,10 @@
   = f.label :attendance, "出勤有無"
   br
   = f.radio_button :attendance, true
-  | 有
+  = f.label :attendance_true, "有"
 
   = f.radio_button :attendance, false
-  | 無
+  = f.label :attendance_false, "無"
 
 .form-group
   = f.label :date, "希望日程"
