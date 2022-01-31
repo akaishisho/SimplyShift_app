@@ -3,7 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //お問い合わせボタン調整
-.btn.btn-primary.rounded-pill{
+.btn.btn-primary.rounded-pill {
   width: 300px;
   padding: 10px;
+}
+
+.span.name {
+  font-weight: bold;
+  margin-bottom:-20px;
+}
+
+.span.email {
+  font-weight: bold;
+  margin-bottom:-20px;
+}
+
+.span.message {
+  font-weight: bold;
+  margin-bottom:-20px;
 }

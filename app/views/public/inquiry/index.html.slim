@@ -1,50 +1,52 @@
-= form_for @inquiry, :url => inquiry_confirm_path do |f|
-  .page-header
-    br
-    h1
-      | お問い合わせ
+.container
+  .row
+    .col-sm-12.col-md-8.col-lg-5.px-5.px-sm-0.mx-auto
+      = form_for @inquiry, :url => inquiry_confirm_path do |f|
+        .page-header
+          br
+          h1
+            | お問い合わせ
 
-    br
+          br
 
-  - if @inquiry.errors.any?
-    .alert.alert-danger[role="alert"]
-      strong
-        | 入力内容にエラーがあります
+        - if @inquiry.errors.any?
+          .alert.alert-danger[role="alert"]
+            strong
+              | 入力内容にエラーがあります
 
-      ul
-        - @inquiry.errors.each do |attr, msg|
-          li
-            = msg
+            ul
+              - @inquiry.errors.each do |attr, msg|
+                li
+                  = msg
 
-  table.table
-    tr
-      th
-        | 名前
+        table.table.table-borderless
+          tr
+            th
+              | 名前
 
-        span.text-danger
-          | （必須）
+              span.text-danger
+                | （必須）
 
-        = f.text_field :name, class: "form-control name"
-      td
+              = f.text_field :name, class: "form-control name"
+            td
 
-    tr
-      th
-        | メールアドレス
+          tr
+            th
+              | メールアドレス
 
-        span.text-danger
-          | （必須）
+              span.text-danger
+                | （必須）
 
-        = f.text_field :email, class: "form-control email"
+              = f.text_field :email, class: "form-control email"
 
-      td
+            td
 
-    tr
-      th
-        | お問い合わせ内容
+          tr
+            th
+              | お問い合わせ内容
 
-        = f.text_area :message, class: "form-control message"
-      td
-  .container
-    .row.justify-content-center
-      = f.submit '確 認', class: 'btn btn-primary rounded-pill'
-      
+              = f.text_area :message, class: "form-control message"
+            td
+        .container
+          .row.justify-content-center
+            = f.submit '確 認', class: 'btn btn-primary rounded-pill'
